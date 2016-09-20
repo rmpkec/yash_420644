@@ -1,0 +1,90 @@
+<!-- Validation failure messages -->
+<% if @ticket.errors.any? %>
+  <% @ticket.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Ticket #<%= @ticket.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_ticket/<%= @ticket.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @ticket.name %>">
+      </div>
+
+      <!-- Label and input for source -->
+      <div class="form-group">
+        <label for="source" class="control-label">
+          Source
+        </label>
+
+        <input type="text" id="source" name="source" placeholder="Source" class="form-control" value="<%= @ticket.source %>">
+      </div>
+
+      <!-- Label and input for note_id -->
+      <div class="form-group">
+        <label for="note_id" class="control-label">
+          Note
+        </label>
+
+        <input type="text" id="note_id" name="note_id" placeholder="Note" class="form-control" value="<%= @ticket.note_id %>">
+      </div>
+
+      <!-- Label and input for score -->
+      <div class="form-group">
+        <label for="score" class="control-label">
+          Score
+        </label>
+
+        <input type="text" id="score" name="score" placeholder="Score" class="form-control" value="<%= @ticket.score %>">
+      </div>
+
+      <!-- Label and input for last_received_at -->
+      <div class="form-group">
+        <label for="last_received_at" class="control-label">
+          Last received at
+        </label>
+
+        <input type="text" id="last_received_at" name="last_received_at" placeholder="Last received at" class="form-control" value="<%= @ticket.last_received_at %>">
+      </div>
+
+      <!-- Label and input for schema_less -->
+      <div class="form-group">
+        <label for="schema_less" class="control-label">
+          Schema less
+        </label>
+
+        <input type="text" id="schema_less" name="schema_less" placeholder="Schema less" class="form-control" value="<%= @ticket.schema_less %>">
+      </div>
+
+      <!-- Label and input for closed -->
+      <div class="checkbox">
+        <label for="closed">
+          <input type="checkbox" id="closed" name="closed" value="1" <%= "checked" if @ticket.closed %>>
+          Closed
+        </label>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Ticket
+      </button>
+      or
+      <a href="/tickets/<%= @ticket.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

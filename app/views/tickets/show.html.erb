@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h3>Ticket #<%= @ticket.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @ticket.name %></dd>
+
+      <dt>Source</dt>
+      <dd><%= @ticket.source %></dd>
+
+      <dt>Note</dt>
+      <dd><%= @ticket.note_id %></dd>
+
+      <dt>Score</dt>
+      <dd><%= @ticket.score %></dd>
+
+      <dt>Last received at</dt>
+      <dd><%= @ticket.last_received_at %></dd>
+
+      <dt>Schema less</dt>
+      <dd><%= @ticket.schema_less %></dd>
+
+      <dt>Closed</dt>
+      <dd><%= @ticket.closed %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/tickets" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/tickets/<%= @ticket.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_ticket/<%= @ticket.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
